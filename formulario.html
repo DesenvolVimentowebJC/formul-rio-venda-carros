@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Cadastro de Veículo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Formulário</h1>
+      </div>
+      <div class="form-container">
+        <div class="form-header">
+          <p>Formulário</p>
+          <h2 class="venda">Venda o seu veiculo rapido e com segurança</h2>
+        </div>
+        <div class="form-body">
+          <h1 class="form-title">Venda fácil o seu carro!</h1>
+          <p>
+            Descreva as características e marque os opcionais que ele possui
+          </p>
+          <form id="meuFormulario">
+            <div class="box-input">
+              <label for="title">
+                Título do anúncio <span class="required-field">*</span>
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                class="block"
+                placeholder="Um título para anunciar o seu carro"
+                minlength="1"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <label for="price">
+                Preço <span class="required-field">*</span>
+              </label>
+              <input
+                type="number"
+                name="price"
+                id="price"
+                class="block"
+                placeholder="Defina o preço"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <label for="description">
+                Descrição <span class="required-field">*</span>
+              </label>
+              <textarea
+                name="description"
+                id="description"
+                class="block"
+                placeholder="Aqui você coloca os detalhes do seu carro"
+              ></textarea>
+            </div>
+            <div class="box-input">
+              <label for="brand">
+                Marca <span class="required-field">*</span>
+              </label>
+              <input
+                type="text"
+                name="brand"
+                id="brand"
+                class="block"
+                placeholder="Digite a marca do veículo"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <label for="model">
+                Modelo <span class="required-field">*</span>
+              </label>
+              <input
+                type="text"
+                name="model"
+                id="model"
+                class="block"
+                placeholder="Digite o modelo do veículo"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <label for="mileage">
+                Kilometragem <span class="required-field">*</span>
+              </label>
+              <input
+                type="number"
+                name="mileage"
+                id="mileage"
+                class="block"
+                placeholder="Digite a kilometragem atual do seu carro"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <label for="purchase_date">
+                Data de compra <span class="required-field">*</span>
+              </label>
+              <input
+                type="date"
+                name="purchase_date"
+                id="purchase_date"
+                class="block"
+                placeholder="Digite a data que você comprou o seu carro"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <p>Tipo de câmbio: <span class="required-field">*</span></p>
+              <input
+                type="radio"
+                id="manual"
+                name="gear"
+                value="manual"
+                required
+              />
+              <label for="manual">Manual</label>
+              <input
+                type="radio"
+                id="automatic"
+                name="gear"
+                value="automatic"
+                required
+              />
+              <label for="automatic">Automático</label>
+            </div>
+            <div class="option-box">
+              <p>Opcionais</p>
+              <ul class="optional-list">
+                <li>
+                  <input
+                    type="checkbox"
+                    id="airbag"
+                    name="optional[]"
+                    value="airbag"
+                  />
+                  <label for="airbag">Airbag</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="alarm"
+                    name="optional[]"
+                    value="alarm"
+                  />
+                  <label for="alarm">Alarme</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="reverse-camera"
+                    name="optional[]"
+                    value="reverse-camera"
+                  />
+                  <label for="reverse-camera">Câmera de ré</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="abs"
+                    name="optional[]"
+                    value="abs"
+                  />
+                  <label for="abs">ABS</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="electric-windows"
+                    name="optional[]"
+                    value="electric-windows"
+                  />
+                  <label for="electric-windows">Vidros elétricos</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="electric-locks"
+                    name="optional[]"
+                    value="electric-locks"
+                  />
+                  <label for="electric-locks">Travas elétricas</label>
+                </li>
+              </ul>
+            </div>
+            <div class="box-input">
+              <p>Fotos do carro: <span class="required-field">*</span></p>
+              <input
+                type="file"
+                multiple
+                accept="image/png, image/jpg"
+                id="iamges"
+                name="iamges"
+                required
+              />
+            </div>
+            <button class="btn-submit" type="submit">Enviar Anúncio</button>
+          </form>
+          <div id="mensagem-enviada" style="display: none">
+            <p>Seu anúncio foi enviado com sucesso!</p>
+          </div>
+          <div id="mensagem-erro" style="display: none; color: red">
+            <p>
+              Ocorreu um erro ao enviar o anúncio. Por favor, tente novamente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("meuFormulario")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Impede o envio padrão do formulário
+
+          const formData = new FormData(this);
+
+          fetch("/enviar-anuncio", {
+            // *** ATENÇÃO: Mude para a URL correta do seu backend ***
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                document.getElementById("meuFormulario").style.display = "none";
+                document.getElementById("mensagem-enviada").style.display =
+                  "block";
+              } else {
+                document.getElementById("mensagem-erro").style.display =
+                  "block";
+              }
+            })
+            .catch((error) => {
+              console.error("Erro:", error);
+              document.getElementById("mensagem-erro").style.display = "block";
+            });
+        });
+    </script>
+  </body>
+</html>
